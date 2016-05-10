@@ -6,11 +6,16 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+User.delete_all
 Boat.delete_all
 Job.delete_all
 
+20.times do
+	User.create(email: Faker::Internet.email, password: "123456" , password_confirmation: "123456")
+end
+
 10.times do
-	Boat.create(location: Faker::Address.country, user_id: User.all.sample, name: Faker::Company.name, capacity: rand(50..200))
+	Boat.create(location: Faker::Address.country, user_id: User.all.sample.id, name: Faker::Company.name, capacity: rand(50..200))
 end 
 
 20.times do
