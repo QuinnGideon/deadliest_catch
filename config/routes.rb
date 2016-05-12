@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
+  get 'owner/:id' => "home#show", as: :owner
 
+  resources :jobs , only: [:show, :new, :create, :destroy, :update]
   root to: "home#index"
 
   # You can have the root of your site routed with "root"

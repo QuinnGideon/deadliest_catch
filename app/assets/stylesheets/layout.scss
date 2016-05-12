@@ -1,0 +1,30 @@
+$main : #8EA5FF;
+$active : #FFD55E;
+$accent : #5265B2;
+$main-light: #A8B9FF;
+$active-dark: #EDD17F;
+
+
+#banner{
+	width: 100%;
+	height: 60px;
+	background-color: $main;
+}
+nav	{
+	float: right;
+
+}
+
+#layout-user-list{
+	width: 20%;
+	height: 100vh;
+	float: left;
+	background: white;
+}
+
+#content{
+	float: right;
+	height: 100vh;
+	width: 80%;
+	background-color: white;
+}
