@@ -14,11 +14,15 @@ Job.delete_all
 	User.create(email: Faker::Internet.email, password: "123456" , password_confirmation: "123456")
 end
  users = User.all
-20.times do
-	Boat.create(location: Faker::Address.country, user_id: users.sample.id, name: Faker::Company.name, capacity: rand(50..200))
+users.each do|user|
+	2.times do 
+		Boat.create(location: Faker::Address.country, user_id: user.id, name: Faker::Company.name, capacity: rand(50..200))
+	end
 end 
 
-20.times do
-	boat = Boat.all.sample
+boats = Boat.all
+boats.each do |boat|
+	4.times do 
 	Job.create(boat_id: boat.id, body: Faker::Lorem.sentence, name: Faker::Company.catch_phrase, cost: rand(1000...5000), origin: Faker::Address.country, destination: Faker::Address.country, containers_reqd: rand(1..boat.capacity))
+	end
 end
