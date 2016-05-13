@@ -9,6 +9,7 @@
 </head>
 <body>
 	<div id="banner">
+
 		<nav>
 			<ul>
 				<% if current_user %>
@@ -22,6 +23,7 @@
 		
 
 	<div id="layout-user-list">
+	<h3>Captains of the Sea</h3>
 		<%owners = User.all %>
 		<ul>
 			<% owners.each do |owner| %>
