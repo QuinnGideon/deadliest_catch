@@ -1,4 +1,7 @@
 <h1><%= @user.email.split('@')[0].capitalize %></h1>
+
+<%= button_to("Add boat", new_boat_path, method: :get) if current_user == @user %>
+
 <h3> Boats owned: <%= @boats.length %></h3>
 <% @boats.each do |boat|%>
 	<div class="user-boat">
@@ -6,6 +9,7 @@
 		<p>Capacity: <%= boat.capacity %></p>
 		<p>Location: <%= boat.location %></p>
 		<%= button_to "Add Job", jobs_path %>
+		<%= button_to "Delete Boat", boat_path(boat.id), method: :delete %>
 		<h3>Jobs</h3>
 		<% boat.jobs.each do |job|%>
 			<div class="job">
@@ -14,6 +18,7 @@
 				<p>Origin: <%= job.origin%></p>
 				<p>Destination: <%= job.destination %></p>
 				<p>Containers: <%= job.containers_reqd %></p>
+				<%= button_to "Delete Job", job_path(job.id), method: :delete %> 
 			</div>
 		<% end %>
 	</div>

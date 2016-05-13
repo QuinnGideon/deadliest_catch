@@ -3,6 +3,8 @@ class JobsController < ApplicationController
 	end
 
 	def destroy 
+		Job.find(params[:id]).delete
+		redirect_to :back
 	end 
 
 	def update 

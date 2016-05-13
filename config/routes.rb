@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   get 'owner/:id' => "home#show", as: :owner
-
+  resources :boats, only: [:create, :destroy, :new]
   resources :jobs , only: [:show, :new, :create, :destroy, :update]
   root to: "home#index"
 
