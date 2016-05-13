@@ -1,7 +1,22 @@
-<div id="owner_info">
-	aksjc;ahc
-</div>
 
-<div id="owner_boats">
-	
-</div>
+<h1><%= @user.email.split('@')[0].capitalize %></h1>
+<h3> Boats owned: <%= @boats.length %></h3>
+<% @boats.each do |boat|%>
+	<div class="user-boat">
+		<h3><%= boat.name %></h3> 
+		<p>Capacity: <%= boat.capacity %></p>
+		<p>Location: <%= boat.location %></p>
+		<%= button_to "Add Job", jobs_path %>
+		<h3>Jobs</h3>
+		<% boat.jobs.each do |job|%>
+			<div class="job">
+				<h4><%= job.name %></h4>
+				<p>Pay: <%= job.cost%></p>
+				<p>Origin: <%= job.origin%></p>
+				<p>Destination: <%= job.destination %></p>
+				<p>Containers: <%= job.containers_reqd %></p>
+			</div>
+		<% end %>
+	</div>
+<% end %>
+
