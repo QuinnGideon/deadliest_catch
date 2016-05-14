@@ -1,7 +1,7 @@
 <%= form_for @boat do |f| %>
-	<%= f.text_field :name %> 
-	<%= f.text_field :capacity %> 
-	<%= f.text_field :location %> 
+	<%= f.text_field :name, placeholder: "Boat name." %> 
+	<%= f.text_field :capacity, placeholder: "Capacity" %> 
+	<%= f.select(:location, locations.collect{|loc| [ loc, loc]}, prompt: "locations")%>
 	<%= f.hidden_field :user_id, value: current_user.id %>
 	<%= f.submit %> 
 <% end %>
