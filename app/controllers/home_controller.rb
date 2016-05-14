@@ -6,6 +6,7 @@ class HomeController < ApplicationController
 	def show
 		@user = User.find(params[:id])
 		@boats = @user.boats
+		@job = Job.new
 	end
 	
 end

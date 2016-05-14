@@ -1,0 +1,12 @@
+<%= form_for(@job, remote: true) do |f| %>
+	<%= f.text_field :name, placeholder: "Name" %>
+	<%= f.text_field :body, placeholder: "Enter job description" %>
+	<%= f.text_field :cost, placeholder: "Budget" %>
+	<%= f.select(:origin, locations.collect{|loc| [ loc, loc]}, prompt: "From")%>
+	<%= f.select(:destination, locations.collect{|loc| [ loc, loc]}, :prompt => "To") %>
+	<%= f.select(:boat_id, Boat.where(user_id: @user.id).collect{|q| [q.name,q.id]}, prompt: "Select Boat") %>
+	<%= f.text_field :containers_reqd , placeholder: "Load" %>
+	<%= f.hidden_field :progress, value: "ASSIGNED"%>
+	<%= f.hidden_field :this_user, value: @user%>
+	<%= f.submit class:"create-job"%>
+<% end %>

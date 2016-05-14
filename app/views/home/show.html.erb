@@ -2,6 +2,8 @@
 
 <%= button_to("Add boat", new_boat_path, method: :get) if current_user == @user %>
 
+<%= render 'job_form' %>
+
 <h3> Boats owned: <%= @boats.length %></h3>
 <% @boats.each do |boat|%>
 	<div class="user-boat">
@@ -11,15 +13,18 @@
 		<%= button_to "Add Job", jobs_path %>
 		<%= button_to "Delete Boat", boat_path(boat.id), method: :delete %>
 		<h3>Jobs</h3>
-		<% boat.jobs.each do |job|%>
-			<div class="job">
-				<h4><%= job.name %></h4>
-				<p>Pay: <%= job.cost%></p>
-				<p>Origin: <%= job.origin%></p>
-				<p>Destination: <%= job.destination %></p>
-				<p>Containers: <%= job.containers_reqd %></p>
-				<%= button_to "Delete Job", job_path(job.id), method: :delete %> 
-			</div>
-		<% end %>
+		<div id="jobs">
+			<% boat.jobs.reverse.each do |job|%>
+				<div class="job">
+					<h4 class="job-name"><%= link_to job.name, job_path(job.id) %></h4>
+					<p class="job-cost">Pay: <%= job.cost%></p>
+					<p class="job-origin">Origin: <%= job.origin%></p>
+					<p class="job-destination">Destination: <%= job.destination %></p>
+					<p class="job-container">Containers: <%= job.containers_reqd %></p>
+					<%= button_to "Delete Job", job_path(job.id), method: :delete %> 
+				</div>
+			<% end %>
+		</div>
+		
 	</div>
 <% end %>

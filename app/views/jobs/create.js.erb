@@ -1,0 +1,15 @@
+<% if @job.errors.any?  %>
+
+	<% @job.errors.full_messages.each do |error| %>
+    var errors = $('#error-list');
+    errors.append('<li><%= escape_javascript( error ) %></li>');
+  <% end %>
+
+<% else %>
+	$('#jobs').prepend('<div class="job"><h4 class="job-name"><%= @job.name %></h4><p class="job-cost">Pay: <%= @job.cost%></p><p class="job-origin">Origin: <%= @job.origin%></p><p class="job-destination">Destination: <%= @job.destination %></p><p class="job-container">Containers: <%= @job.containers_reqd %></p><%= button_to "Delete Job", job_path(@job.id), method: :delete %> </div>');
+	console.log("job created")
+<% end %>
+
+console.log("I did something.")
+$("#notice").html("<%= flash[:notice] %>");
+$("#alert").html("<%= flash[:alert] %>");
