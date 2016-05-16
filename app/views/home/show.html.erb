@@ -3,10 +3,10 @@
 <h3> Boats owned: <%= @boats.length %></h3>
 <% @boats.each do |boat|%>
 	<div class="user-boat">
-		<h3><%= boat.name %></h3> 
+		<h3>Boat Name: <%= boat.name %></h3> 
 		<p>Capacity: <%= boat.capacity %></p>
 		<p>Location: <%= boat.location %></p>
-		<%= button_to "Add Job", jobs_path %>
+		<%= button_to "Add Job", jobs_path, :class => "page-btn"%>
 		<h3>Jobs</h3>
 		<% boat.jobs.each do |job|%>
 			<div class="job">
