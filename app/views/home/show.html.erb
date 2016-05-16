@@ -21,10 +21,10 @@
 					<%= button_to "Unfollow", follow_path(@follow.id), method: :delete, remote: true, class: "unfollow-btn" %>
 				<% end %>
 			</div>
-			<% end %>
-		<%= button_to "Add Job", jobs_path %>
-		<%= button_to "Delete Boat", boat_path(boat.id), method: :delete %>
-
+		<% end %>
+		<% if current_user == @user %>
+			<%= button_to "Delete Boat", boat_path(boat.id), method: :delete %>
+		<% end %>
 		<h3>Jobs</h3>
 		<div id="jobs">
 			<% boat.jobs.reverse.each do |job|%>
@@ -34,7 +34,9 @@
 					<p class="job-origin">Origin: <%= job.origin%></p>
 					<p class="job-destination">Destination: <%= job.destination %></p>
 					<p class="job-container">Containers: <%= job.containers_reqd %></p>
-					<%= button_to "Delete Job", job_path(job.id), method: :delete %> 
+					<% if current_user == @user %>
+						<%= button_to "Delete Job", job_path(job.id), method: :delete %> 
+					<% end %>
 				</div>
 			<% end %>
 		</div>
