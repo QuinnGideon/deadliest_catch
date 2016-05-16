@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'owner/:id' => "home#show", as: :owner
   resources :boats, only: [:create, :destroy, :new]
   resources :jobs , only: [:show, :new, :create, :destroy, :update]
+  resources :follows, only: [:create, :destroy]
   root to: "home#index"
 
   # You can have the root of your site routed with "root"
