@@ -13,7 +13,7 @@
 		<nav>
 			<ul>
 				<% if current_user %>
-					<li><%= button_to current_user.email%></li>  
+					<li><%= button_to current_user.email, owner_path(current_user), method: :get %></li>  
 				<% end %> 
 				<li><%= button_to("Home", root_path, method: :get)%></li>
 				<li><%= current_user ? button_to("Logout", destroy_user_session_path, method: :delete): button_to("Login", new_user_session_path) %></li>
@@ -32,8 +32,13 @@
 		</ul>
 	</div>
   <div id="content">
-  	<p id="notice"><%= notice %></p>
-    <p id="alert"><%= alert %></p>
+  	<div id="message-box">
+	  	<p id="notice"><%= notice %></p>
+	    <p id="alert"><%= alert %></p>
+	    <ul id="error-list">
+	    	
+	    </ul>
+  	</div>
   
 	
 		<%= yield %>

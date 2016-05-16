@@ -1,0 +1,14 @@
+<% if @follow.errors.any? %>
+	<% @follow.errors.full_messages.each do |error| %>
+    var errors = $('#error-list');
+    errors.append('<li><%= escape_javascript( error ) %></li>');
+  <% end %>
+<% else %>
+	$('.button_to').on('ajax:complete', function(){
+		var followBtn = $(this).children('.follow-btn')
+		if(followBtn){
+			followBtn.hide();
+			$(this).parent().html('<%= escape_javascript(button_to "Unfollow", follow_path(@follow.id), method: :delete, remote: true, class: "unfollow-btn")%>')
+		};
+	});
+<% end %>
